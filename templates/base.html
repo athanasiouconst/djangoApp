@@ -1,10 +1,22 @@
 <!doctype html>
 <html lang="en">
 	<head>
-		<title>My Django App</title>
+		<title>{% block head_title %}My Django App{% endblock head_title %}</title>
 	</head>
 	<body>
-		<h1><p>My {{html_var}} App</p></h1>
-		<p>Random Num is : {{num}}</p>
+		
+<!-- 		<h1><p>My <code>{% verbatim %}{{html_var}}{% endverbatim %}</code> App</p></h1>
+ -->		
+ 	<a href="/">Home</a>
+ 	<a href="/about">About</a>
+ 	<a href="/contact">Contact</a>
+	<h1>Constantinos Athanasiou</h1>
+		<h2>email: csiouath@gmail.com</h2>
+		<h1><p>My {{html_var}} App | Home</p></h1>
+ 	<div class= "container">
+		{% block content %}
+
+		{% endblock content %}		
+	</div>	
 	</body>
 </html>

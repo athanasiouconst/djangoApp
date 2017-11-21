@@ -1,0 +1,17 @@
+		{% extends "base.html" %}
+		{% block head_title %}Welcome || {{block.super }}{% endblock head_title %}
+		{% block content %}
+		<p>
+			{% if num is not None %}
+				Random Num is : {{num}}
+			{% endif%}
+		</p>
+		<p>
+			{% for some_item in some_list %}
+				{% if some_item|divisibleby:"2" %}
+					Even Number : {{some_item}}<br/>
+				{% endif %}
+			{% endfor %}
+		</p>
+
+		{% endblock content %}
