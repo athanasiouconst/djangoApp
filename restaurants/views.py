@@ -3,6 +3,16 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.views import View
 from django.views.generic import TemplateView
+from .models import RestaurantLocation
+
+def restaurant_listview(request):
+	template_name='restaurants/restaurants_list.html'
+	queryset = RestaurantLocation.objects.all()
+	context={
+		"object_list" : queryset
+	}
+
+	return render(request,template_name,context)
 
 # # Create your views here.
 # def home_old(request):
@@ -87,40 +97,40 @@ from django.views.generic import TemplateView
 	# 			}
 	# 	return render (request, "about.html", context)  #response
 
-class HomeView(TemplateView):
-	template_name = 'home.html'
+# class HomeView(TemplateView):
+# 	template_name = 'home.html'
 
-	def get_context_data(self, *args, **kwargs):
-		context = super(HomeView, self).get_context_data(*args, **kwargs)
-		html_var = 'Django'
-		num=None
+# 	def get_context_data(self, *args, **kwargs):
+# 		context = super(HomeView, self).get_context_data(*args, **kwargs)
+# 		html_var = 'Django'
+# 		num=None
 		
-		some_list = [random.randint(0,10000000), random.randint(0,10000000), random.randint(0,10000000)]
-		condition_bool_item  = True
+# 		some_list = [random.randint(0,10000000), random.randint(0,10000000), random.randint(0,10000000)]
+# 		condition_bool_item  = True
 
-		if condition_bool_item:
-			num = random.randint(0,10000000)
-		context = {
-					"html_var":html_var, 
-					"num":num,
-					"some_list":some_list
-					}
-		return context
+# 		if condition_bool_item:
+# 			num = random.randint(0,10000000)
+# 		context = {
+# 					"html_var":html_var, 
+# 					"num":num,
+# 					"some_list":some_list
+# 					}
+# 		return context
 
-class AboutView(TemplateView):
-	template_name = 'about.html'
-	def get_context_data(self, *args, **kwargs):
+# class AboutView(TemplateView):
+# 	template_name = 'about.html'
+# 	def get_context_data(self, *args, **kwargs):
 
-		context = super(AboutView, self).get_context_data(*args, **kwargs)
-		html_var = 'Django'
-		context = {"html_var":html_var}
-		return context
+# 		context = super(AboutView, self).get_context_data(*args, **kwargs)
+# 		html_var = 'Django'
+# 		context = {"html_var":html_var}
+# 		return context
 
-class ContactView(TemplateView):
-	template_name = 'contact.html'
-	def get_context_data(self, *args, **kwargs):
+# class ContactView(TemplateView):
+# 	template_name = 'contact.html'
+# 	def get_context_data(self, *args, **kwargs):
 
-		context = super(ContactView, self).get_context_data(*args, **kwargs)
-		html_var = 'Django'
-		context = {"html_var":html_var}
-		return context
+# 		context = super(ContactView, self).get_context_data(*args, **kwargs)
+# 		html_var = 'Django'
+# 		context = {"html_var":html_var}
+# 		return context
