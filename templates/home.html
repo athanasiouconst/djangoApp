@@ -1,7 +1,8 @@
 		{% extends "base.html" %}
 		{% block head_title %}Welcome || {{block.super }}{% endblock head_title %}
+		{% block container_title %}Home {% endblock container_title %}
 		{% block content %}
-		<p>
+		<!-- <p>
 			{% if num is not None %}
 				Random Num is : {{num}}
 			{% endif%}
@@ -12,6 +13,6 @@
 					Even Number : {{some_item}}<br/>
 				{% endif %}
 			{% endfor %}
-		</p>
+		</p> -->
 
 		{% endblock content %}
