@@ -18,11 +18,22 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 #from restaurants.views import HomeView , AboutView, ContactView 
 #home, about, contact, ContactView, AboutView
-from restaurants.views import restaurant_listview
+from restaurants.views import (
+    restaurant_listview,
+    RestaurantListView
+    #SearchRestaurantListView
+    #,
+    #MexicanRestaurantListView,
+    #AsianFusionRestaurantListView
+    )
+
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', TemplateView.as_view(template_name='home.html')),
-    url(r'^restaurants$', restaurant_listview),
+    url(r'^restaurants$', RestaurantListView.as_view()),
+    url(r'^restaurants/(?P<slug>\w+)/$', RestaurantListView.as_view()),
+    #url(r'^restaurants/asian$', AsianFusionRestaurantListView.as_view()),
     url(r'^about$', TemplateView.as_view(template_name='about.html')),
     #url(r'^contact$', ContactTemplateView.as_view()),
      url(r'^contact$', TemplateView.as_view(template_name='contact.html')),
