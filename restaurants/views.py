@@ -3,7 +3,7 @@ from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views import View
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, DetailView
 from .models import RestaurantLocation
 
 def restaurant_listview(request,):
@@ -26,6 +26,17 @@ class RestaurantListView(ListView):
         else:
             queryset = RestaurantLocation.objects.all()
         return queryset
+
+
+class RestaurantDetailView(DetailView):
+    queryset = RestaurantLocation.objects.all()
+    
+    def get_object(self, *args, **kwargs):
+        rest_id = self.kwargs.get('rest_id')
+        obj = get_object_or_404(RestaurantLocation, id=rest_id) # pk = rest_id
+        return obj
+
+
 
 
 # class SearchRestaurantListView(ListView):
